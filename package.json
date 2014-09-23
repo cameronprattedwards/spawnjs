@@ -1,0 +1,24 @@
+{
+  "name": "spawnjs",
+  "version": "0.0.1",
+  "description": "A utility library for prototypal inheritance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cameronprattedwards/spawnjs.git"
+  },
+  "keywords": [
+    "javascript",
+    "prototypal",
+    "inheritance"
+  ],
+  "author": "Cameron Edwards",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cameronprattedwards/spawnjs/issues"
+  },
+  "homepage": "https://github.com/cameronprattedwards/spawnjs"
+}

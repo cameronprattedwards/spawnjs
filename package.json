@@ -1,6 +1,6 @@
 {
-  "name": "spawn",
-  "version": "0.0.1",
+  "name": "spawnjs",
+  "version": "1.0.0",
   "description": "A utility library for prototypal inheritance",
   "main": "index.js",
   "scripts": {

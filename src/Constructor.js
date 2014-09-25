@@ -11,7 +11,29 @@
 	}
 }(this, function(spawn) {
 	var initializing = false,
-		fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
+		fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/,
+		utils = {
+			isFn: function(obj) {
+				return typeof obj == 'function';
+			},
+			isOverride: function(newFn, oldFn) {
+				return utils.isFn(newFn) && utils.isFn(oldFn) && fnTest.test(newFn);
+			},
+			makeOverride: function(newFn, oldFn) {
+				return function() {
+					var tmp = this._super,
+						ret;
+
+					this._super = oldFn;
+
+					ret = newFn.apply(this, arguments);
+
+					this._super = tmp;
+
+					return ret;
+				}
+			}
+		};
 	
 	function Constructor() {}
 
@@ -19,38 +41,15 @@
 		init: function() {}
 	});
 
-	function isFn(obj) {
-		return typeof obj == 'function';
-	}
-
-	function isOverride(prop, proto) {
-		return isFn(prop) && isFn(proto) && fnTest.test(prop);
-	}
-
-	function makeOverride(fn, proto) {
-		return function() {
-			var tmp = this._super,
-				ret;
-
-			this._super = proto;
-
-			ret = fn.apply(this, arguments);
-
-			this._super = tmp;
-
-			return ret;
-		}
-	}
-
-	Constructor.spawn = function(props) {
-		var proto,
+	Constructor.spawn = function(newProto) {
+		var oldProto,
 			x;
 
 		initializing = true;
-		proto = new this();
+		oldProto = new this();
 
-		for (x in props)
-			proto[x] = isOverride(props[x], proto[x]) ? makeOverride(props[x], proto[x]) : props[x];
+		for (x in newProto)
+			oldProto[x] = utils.isOverride(newProto[x], oldProto[x]) ? utils.makeOverride(newProto[x], oldProto[x]) : newProto[x];
 
 		initializing = false;
 
@@ -59,13 +58,12 @@
 				this.init.apply(this, arguments);
 		}
 
-		Constructor.prototype = proto;
+		Constructor.prototype = oldProto;
 		Constructor.prototype.constructor = Constructor;
 		Constructor.spawn = arguments.callee;
 
 		return Constructor;
 	}
-
 
 	return Constructor;
 }));

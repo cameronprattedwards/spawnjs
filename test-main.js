@@ -24,6 +24,6 @@ require.config({
   callback: window.__karma__.start,
 
   paths: {
-    'spawn': 'src'
+    'spawnjs': 'src'
   }
 });

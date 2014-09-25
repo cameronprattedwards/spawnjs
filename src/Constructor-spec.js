@@ -1,6 +1,6 @@
 (function(test) {
 	if (typeof define == 'function' && define.amd) {
-		define(['spawn/Constructor', 'spawn/index'], test);
+		define(['spawnjs/Constructor', 'spawnjs/index'], test);
 	} else if (typeof exports == 'object') {
 		test(require('./Constructor'), require('./index'));
 	} else {

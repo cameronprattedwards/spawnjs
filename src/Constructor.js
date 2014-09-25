@@ -1,6 +1,6 @@
 (function(root, factory) {
 	if (typeof define == 'function' && define.amd) {
-		define(['spawn/index'], factory);
+		define(['spawnjs/index'], factory);
 	} else if (typeof exports == 'object') {
 		module.exports = factory(require('./index'));
 	} else {

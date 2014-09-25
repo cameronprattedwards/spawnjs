@@ -7,7 +7,7 @@
 		if (typeof root.spawn !== 'function')
 			throw new Error('spawn must be loaded before Constructor');
 
-		root.spawn.Constructor = factory(spawn);
+		root.spawn.Constructor = factory(root.spawn);
 	}
 }(this, function(spawn) {
 	var initializing = false,

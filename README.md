@@ -51,3 +51,59 @@ var ChildConstructor = ParentConstructor.spawn({
 ```
 
 SpawnJS's source code is only 90 lines long, and the core logic is only 65 lines long. Try it out, and give the source code a read, too!
+
+## Installation
+
+SpawnJS is available via NPM and Bower. Check it out:
+
+```
+npm install spawnjs
+```
+
+```
+bower install spawnjs
+```
+
+## Usage
+
+SpawnJS uses universal module loading, so you can load it via RequireJS, CommonJS/Browserify, or just plain old browser globals. Check it out:
+
+#### RequireJS:
+
+You'll need to map a path to "spawnjs" from "bower_components/spawnjs/src":
+
+```javascript
+require.config({
+	paths: {
+		"spawnjs": "bower_components/spawnjs/src"
+	}
+});
+
+require(["spawnjs/index", "spawnjs/Constructor"], function(spawn, Constructor) {
+	console.log("The spawn function is ", spawn);
+	console.log("The Constructor spawner is ", Constructor);
+});
+```
+
+#### CommonJS:
+```javascript
+var spawn = require("spawnjs"),
+	Constructor = require("spawnjs/Constructor");
+
+spawn({ an: "object" });
+
+var MakeConstructor = Constructor.spawn({ add: "methods" });
+```
+
+#### Globals:
+```html
+<script src="bower_components/spawnjs/dist/spawn.min.js"></script>
+```
+
+```javascript
+var spawn = window.spawn,
+	Constructor = window.spawn.Constructor;
+
+spawn({ an: "object" });
+var MakeConstructor = Constructor.spawn({ add: "methods" });
+```

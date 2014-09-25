@@ -47,11 +47,10 @@
 
 		initializing = true;
 		oldProto = new this();
+		initializing = false;
 
 		for (x in newProto)
 			oldProto[x] = utils.isOverride(newProto[x], oldProto[x]) ? utils.makeOverride(newProto[x], oldProto[x]) : newProto[x];
-
-		initializing = false;
 
 		function Constructor() {
 			if (!initializing)

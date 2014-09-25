@@ -1,4 +1,12 @@
-define(['spawn/index'], function(spawn) {
+(function(test) {
+	if (typeof define == 'function' && define.amd) {
+		define(['spawn/index'], test);
+	} else if (typeof exports == 'object') {
+		test(require('./index'));
+	} else {
+		test(spawn);
+	}
+}(function(spawn) {
 	describe('#spawn()', function() {
 		describe('return value', function() {
 			it('is an object', function() {
@@ -60,4 +68,4 @@ define(['spawn/index'], function(spawn) {
 			});
 		});
 	});
-});
+}));

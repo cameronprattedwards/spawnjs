@@ -1,4 +1,12 @@
-define(['spawn/Constructor', 'spawn/index'], function(Constructor, spawn) {
+(function(test) {
+	if (typeof define == 'function' && define.amd) {
+		define(['spawn/Constructor', 'spawn/index'], test);
+	} else if (typeof exports == 'object') {
+		test(require('./Constructor'), require('./index'));
+	} else {
+		test(spawn.Constructor, spawn);
+	}
+}(function(Constructor, spawn) {
 	describe('Constructor', function() {
 		it('is a function', function() {
 			Constructor.should.be.a('function');
@@ -41,4 +49,4 @@ define(['spawn/Constructor', 'spawn/index'], function(Constructor, spawn) {
 			});
 		});
 	});
-});
+}));

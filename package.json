@@ -1,10 +1,10 @@
 {
-  "name": "spawnjs",
+  "name": "spawn",
   "version": "0.0.1",
   "description": "A utility library for prototypal inheritance",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start karma.conf.amd.js --single-run && karma start karma.conf.globals.js --single-run && mocha mocha-tests.js"
   },
   "repository": {
     "type": "git",

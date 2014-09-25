@@ -1,4 +1,15 @@
-define(['spawn/index'], function(spawn) {
+(function(root, factory) {
+	if (typeof define == 'function' && define.amd) {
+		define(['spawn/index'], factory);
+	} else if (typeof exports == 'object') {
+		module.exports = factory(require('./index'));
+	} else {
+		if (typeof root.spawn !== 'function')
+			throw new Error('spawn must be loaded before Constructor');
+
+		root.spawn.Constructor = factory(spawn);
+	}
+}(this, function(spawn) {
 	var initializing = false,
 		fnTest = /xyz/.test(function(){xyz;}) ? /\b_super\b/ : /.*/;
 	
@@ -57,4 +68,4 @@ define(['spawn/index'], function(spawn) {
 
 
 	return Constructor;
-});
+}));

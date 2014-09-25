@@ -1,0 +1,23 @@
+{
+  "name": "spawn",
+  "version": "1.0.0",
+  "homepage": "https://github.com/cameronprattedwards/spawnjs",
+  "authors": [
+    "Cameron Edwards <cameronprattedwards@gmail.com>"
+  ],
+  "description": "A utility library for prototypal inheritance",
+  "main": "src/index.js",
+  "keywords": [
+    "javascript",
+    "prototypal",
+    "inheritance"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
